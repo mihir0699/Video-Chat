@@ -3,6 +3,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://foodeazy.herokuapp.com/)&nbsp;[![Build passing](https://img.shields.io/badge/Build-Passing-brightgreen.svg?style=flat-square)](https://foodeazy.herokuapp.com/)&nbsp;[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://foodeazy.herokuapp.com/)&nbsp;[![License](https://img.shields.io/badge/license-MIT-brightgreen)](https://foodeazy.herokuapp.com/)&nbsp;![Made with Love in India](https://madewithlove.org.in/badge.svg)
 
 This is video calling application where users can call other user and will also have the capabiltiy to mute their mic and audio. Their is also real time chat functionality.
+It's also a modern PWA so users can also install it on their devices like other native apps.
 
 **Project Link** - ***https://video-chat-mihir.web.app/***
 
