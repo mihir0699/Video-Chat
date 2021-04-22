@@ -22,14 +22,10 @@
   align-content: space-evenly;
   position: relative;
   border-radius: 5px;
-  border: 10px solid;
+  border: 10px solid rgb(5, 117, 230, 1);
   border-image-slice: 1;
   border-width: 3px;
-  border-image-source: linear-gradient(
-    to right,
-    rgb(5, 117, 230, 1),
-    rgb(2, 27, 121, 0.2)
-  );
+
   box-shadow: 0px 0px 15px grey;
 }
 .card2 {
@@ -161,6 +157,6 @@
 
 @media only screen and (max-width: 600px) {
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 475px));
+    grid-template-columns: repeat(auto-fit, minmax(325px, 425px));
   }
 }

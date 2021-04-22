@@ -11,6 +11,7 @@ I have made this Instagram Clone using technologies like React.js, firebase and 
 - Mute audio/video
 - Instantly join video call with a code
 - Chat in real-time
+- Chat Notifications
 - Install it as a PWA (Progressive Web App) on your device
 - Unlimited duration calls
 - Share code instantly on social media platforms
@@ -18,25 +19,23 @@ I have made this Instagram Clone using technologies like React.js, firebase and 
 
 ## Screenshots
 
-### Auth Page
+### Home Page
 
-![enter image description here](https://raw.githubusercontent.com/mihir0699/Instagram-Clone/master/git_images/auth.PNG?token=ALT5AMAAKUKBS6T4V2DVEWTAC2WQ4)
+![enter image description here](https://user-images.githubusercontent.com/48746544/115701626-9b838e00-a385-11eb-8a07-214ca0b9f327.png)
 
-### Profile Page
+### Incoming Call
 
-![enter image description here](https://raw.githubusercontent.com/mihir0699/Instagram-Clone/master/git_images/profile.PNG?token=ALT5AME5MADQFC77RFW3GBLAC2WVU)
+![enter image description here](https://user-images.githubusercontent.com/48746544/115701844-d8e81b80-a385-11eb-91cf-014b23e24ae4.png)
 
-### Feed Page
+### In Call
 
-![enter image description here](https://raw.githubusercontent.com/mihir0699/Instagram-Clone/master/git_images/feed.PNG?token=ALT5AMCRJBU2ILGAWVDW6UDAC2WYK)
+![enter image description here](https://user-images.githubusercontent.com/48746544/115702841-07b2c180-a387-11eb-897e-f19abefafef5.png)
 
-### Post Page
+### Chat
 
-![enter image description here](https://raw.githubusercontent.com/mihir0699/Instagram-Clone/master/git_images/Post.PNG?token=ALT5AMD6ZVXRPWNKGMPC4CLAC2W3U)
+![enter image description here](https://user-images.githubusercontent.com/48746544/115702929-24e79000-a387-11eb-906c-704608263da4.png)
 
-### Resposiveness
-
-![enter image description here](https://raw.githubusercontent.com/mihir0699/Instagram-Clone/master/git_images/responsive.PNG?token=ALT5AMHS2GTGY667U3PZ7ATAC2W5S)
+![enter image description here](https://user-images.githubusercontent.com/48746544/115703177-709a3980-a387-11eb-8d9d-15ddf3b66a25.png)
 
 ## Tech Stack 💻
 
