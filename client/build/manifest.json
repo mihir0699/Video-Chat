@@ -1,0 +1,22 @@
+{
+  "short_name": "Video Chat",
+  "name": "Video Chat App",
+  "icons": [
+    {
+      "src": "./video64.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+
+    {
+      "src": "./video512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

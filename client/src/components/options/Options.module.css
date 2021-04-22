@@ -1,0 +1,66 @@
+.options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  column-gap: 5rem;
+  margin: 2rem auto;
+  width: 60%;
+  background: white;
+  padding: 0.5rem 1rem;
+  padding-bottom: 0;
+  border-top: 5px solid dodgerblue;
+  border-radius: 0.2rem;
+}
+
+.inputgroup {
+  font-family: Gilroy-light;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.options .btn {
+  margin-top: 1rem;
+}
+.inputgroup {
+  width: 80%;
+}
+
+.btnDiv {
+  display: flex;
+  margin-top: 1rem;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.phone {
+  height: 4rem;
+}
+
+.btnDiv .answer {
+  background-color: #29bb89;
+  color: #1e6f5c;
+  font-weight: bold;
+}
+
+.btnDiv .decline {
+  background-color: #fa1e0e;
+  color: #8c0000;
+  font-weight: bold;
+}
+.share_icon {
+  margin: 0.5rem 0.5rem;
+  margin-left: 0;
+}
+.share_border:focus,
+.share_border:active,
+.share_border {
+  outline: none !important;
+  border: none !important;
+  outline-offset: none !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .options {
+    width: 90%;
+    padding-bottom: 1rem;
+  }
+}
