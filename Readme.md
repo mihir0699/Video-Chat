@@ -18,7 +18,7 @@ This is video calling application where users can call other user and will also 
 - Share code instantly on social media platforms
 - Simple and intuitive UI
 
-## Screenshots
+## Screenshots 📸
 
 ### Home Page
 
