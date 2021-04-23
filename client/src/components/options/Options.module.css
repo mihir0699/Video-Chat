@@ -42,9 +42,15 @@
 }
 
 .btnDiv .decline {
-  background-color: #fa1e0e;
+  background-color: rgb(250, 30, 14, 0.75);
   color: #8c0000;
   font-weight: bold;
+}
+.hang {
+  background-color: rgb(250, 30, 14, 0.75) !important;
+  color: #8c0000 !important;
+  font-weight: bold;
+  margin-top: 1rem;
 }
 .share_icon {
   margin: 0.5rem 0.5rem;

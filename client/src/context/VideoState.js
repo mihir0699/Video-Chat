@@ -3,7 +3,7 @@ import VideoContext from "./VideoContext";
 import { io } from "socket.io-client";
 import Peer from "simple-peer";
 
-export const socket = io("https://video-chat-india.herokuapp.com/");
+export const socket = io("https://fathomless-tundra-67025.herokuapp.com/");
 
 const VideoState = ({ children }) => {
   const [callAccepted, setCallAccepted] = useState(false);
@@ -13,6 +13,7 @@ const VideoState = ({ children }) => {
   const [name, setName] = useState("");
   const [call, setCall] = useState({});
   const [me, setMe] = useState("");
+  const [userName, setUserName] = useState("");
   const [otherUser, setOtherUser] = useState("");
   const [msgRcv, setMsgRcv] = useState("");
 
@@ -56,7 +57,11 @@ const VideoState = ({ children }) => {
     const peer = new Peer({ initiator: false, trickle: false, stream });
 
     peer.on("signal", (data) => {
-      socket.emit("answerCall", { signal: data, to: call.from });
+      socket.emit("answerCall", {
+        signal: data,
+        to: call.from,
+        userName: name,
+      });
     });
 
     peer.on("stream", (currentStream) => {
@@ -84,9 +89,9 @@ const VideoState = ({ children }) => {
       userVideo.current.srcObject = currentStream;
     });
 
-    socket.on("callAccepted", (signal) => {
+    socket.on("callAccepted", ({ signal, userName }) => {
       setCallAccepted(true);
-
+      setUserName(userName);
       peer.signal(signal);
     });
 
@@ -136,6 +141,7 @@ const VideoState = ({ children }) => {
         setMsgRcv,
         setOtherUser,
         leaveCall1,
+        userName,
       }}
     >
       {children}

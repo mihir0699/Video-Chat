@@ -24,6 +24,7 @@ import { socket } from "../../context/VideoState";
 
 const Options = () => {
   const [idToCall, setIdToCall] = useState("");
+
   const [isModalVisible, setIsModalVisible] = useState(false);
   const Audio = useRef();
   const {
@@ -136,7 +137,11 @@ const Options = () => {
         />
         <br />
         {callAccepted && !callEnded ? (
-          <Button type="primary" onClick={leaveCall} className={classes.btn}>
+          <Button
+            variant="contained"
+            onClick={leaveCall}
+            className={classes.hang}
+          >
             <img src={Hang} alt="hang up" style={{ height: "15px" }} />
             &nbsp; Hang up
           </Button>
@@ -192,7 +197,6 @@ const Options = () => {
             <Button
               variant="contained"
               className={classes.decline}
-              color="#29bb89"
               icon={<PhoneOutlined />}
               onClick={() => {
                 setIsModalVisible(false);

@@ -5,6 +5,7 @@ import VideoState from "./context/VideoState";
 
 import Particles from "react-particles-js";
 import Options from "./components/options/Options";
+import Footer from "./components/Footer/Footer";
 
 const Home = () => {
   useEffect(() => {
@@ -146,6 +147,7 @@ const Home = () => {
         >
           <Video />
           <Options />
+          <Footer />
         </div>
       </div>
     </VideoState>

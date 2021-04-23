@@ -31,6 +31,7 @@ const Video = () => {
     msgRcv,
     chat,
     setChat,
+    userName,
   } = useContext(VideoContext);
 
   const [sound, setSound] = useState(true);
@@ -82,7 +83,11 @@ const Video = () => {
   return (
     <div className="grid">
       {stream ? (
-        <div style={{ textAlign: "center" }} className="card">
+        <div
+          style={{ textAlign: "center" }}
+          className="card"
+          id={callAccepted && !callEnded ? "video1" : "video3"}
+        >
           <div style={{ placeSelf: "center" }}>
             <h3>{name}</h3>
           </div>
@@ -185,9 +190,13 @@ const Video = () => {
       )}
 
       {callAccepted && !callEnded && userVideo && (
-        <div className="card2" style={{ textAlign: "center" }}>
+        <div className="card2" style={{ textAlign: "center" }} id="video2">
           <div style={{ alignSelf: "center" }}>
-            <h3 style={{ alignSelf: "center" }}>{call.name}</h3>
+            {call.from ? (
+              <h3 style={{ alignSelf: "center" }}>{call.name}</h3>
+            ) : (
+              <h3 style={{ alignSelf: "center" }}>{userName}</h3>
+            )}
           </div>
           <div style={{ position: "relative" }}>
             <video

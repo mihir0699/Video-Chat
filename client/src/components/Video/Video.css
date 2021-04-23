@@ -159,4 +159,13 @@
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(325px, 425px));
   }
+  #video1 {
+    grid-row: 2/3;
+  }
+  #video2 {
+    grid-row: 1/2;
+  }
+  #video3 {
+    grid-row: 1/2;
+  }
 }
