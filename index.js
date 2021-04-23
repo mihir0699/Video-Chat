@@ -33,7 +33,8 @@ io.on("connection", (socket) => {
   });
 
   socket.on("answerCall", (data) => {
-    io.to(data.to).emit("callAccepted", data.signal);
+    console.log(data);
+    io.to(data.to).emit("callAccepted", data);
   });
   socket.on("endCall", ({ id }) => {
     io.to(id).emit("endCall");
