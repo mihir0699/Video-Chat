@@ -6,10 +6,14 @@
   font-family: gilroy-light;
   src: url(./assests/Gilroy-Light.otf);
 }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: Gilroy;
 }
 
@@ -41,12 +45,4 @@ body {
     #00b4db
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-video {
-  float: left;
-  max-height: 100% !important;
-
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
 }

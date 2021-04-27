@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Video from "./components/Video/Video";
 import VideoState from "./context/VideoState";
 
-import Particles from "react-particles-js";
+// import Particles from "react-particles-js";
 import Options from "./components/options/Options";
 import Footer from "./components/Footer/Footer";
 
@@ -23,7 +23,7 @@ const Home = () => {
           height: "100%",
         }}
       >
-        <Particles
+        {/* <Particles
           params={{
             particles: {
               number: {
@@ -134,7 +134,7 @@ const Home = () => {
             },
             retina_detect: true,
           }}
-        />
+        /> */}
 
         <div
           style={{

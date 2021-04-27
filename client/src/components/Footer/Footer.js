@@ -10,8 +10,19 @@ const Footer = () => {
           href="https://github.com/mihir0699/Video-Chat"
           target="_blank"
           style={{ color: "white" }}
+          rel="noreferrer"
         >
           Mihir Gupta
+        </a>
+        <br />
+        Front-end Contribution By:{" "}
+        <a
+          href="https://linkedin.com/in/gautamtiwari003"
+          target="_blank"
+          style={{ color: "white" }}
+          rel="noreferrer"
+        >
+          Gautam Tiwari
         </a>
       </div>
     </footer>

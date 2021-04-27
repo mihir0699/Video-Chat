@@ -1,35 +1,44 @@
 .options {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  column-gap: 5rem;
+  column-gap: 3.5rem;
   margin: 2rem auto;
-  width: 60%;
+  width: 90%;
+  max-width: 870px;
   background: white;
   padding: 0.5rem 1rem;
-  padding-bottom: 0;
-  border-top: 5px solid dodgerblue;
-  border-radius: 0.2rem;
-}
 
+  border-top: 5px solid dodgerblue;
+  border-radius: 0.25rem;
+}
+.options .btn {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: none;
+}
+.options .btn:hover {
+  opacity: 0.9;
+}
+.options .btn:focus {
+  outline: 2px solid #000;
+}
 .inputgroup {
   font-family: Gilroy-light;
   font-weight: bold;
   letter-spacing: 3px;
 }
 
-.options .btn {
-  margin-top: 1rem;
-}
 .inputgroup {
-  width: 80%;
+  width: 100%;
+  max-width: 360px;
 }
 
-.btnDiv {
+/* .btnDiv {
   display: flex;
   margin-top: 1rem;
   flex-direction: row;
   justify-content: space-around;
-}
+} */
 
 .phone {
   height: 4rem;
@@ -52,21 +61,19 @@
   font-weight: bold;
   margin-top: 1rem;
 }
-.share_icon {
-  margin: 0.5rem 0.5rem;
-  margin-left: 0;
+
+.share_options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 0.5rem;
 }
-.share_border:focus,
-.share_border:active,
-.share_border {
-  outline: none !important;
-  border: none !important;
-  outline-offset: none !important;
+.share_social {
+  display: flex;
+  /* margin-top: 1rem; */
 }
 
-@media only screen and (max-width: 600px) {
-  .options {
-    width: 90%;
-    padding-bottom: 1rem;
-  }
+.share_icon {
+  display: flex;
+  margin-left: 0.4rem;
 }

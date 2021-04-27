@@ -71,12 +71,14 @@ const Options = () => {
 
   return (
     <div className={classes.options}>
-      <div>
+      <div style={{ marginBottom: "1rem" }}>
         <h2>Account Info</h2>
         <Input
           size="large"
           placeholder="Your name"
           prefix={<UserOutlined />}
+          maxLength={15}
+          suffix={<small>{name.length}/15</small>}
           value={name}
           onChange={(e) => {
             setName(e.target.value);
@@ -84,43 +86,47 @@ const Options = () => {
           }}
           className={classes.inputgroup}
         />
-        <br />
-        <CopyToClipboard text={me}>
-          <Button
-            type="primary"
-            icon={<CopyOutlined />}
-            className={classes.btn}
-            onClick={() => message.success("Code copied successfully!")}
-          >
-            Copy code
-          </Button>
-        </CopyToClipboard>
-        <div className={classes.share_icons}>
-          <WhatsappShareButton
-            url={`https://video-chat-mihir.web.app/`}
-            title={`Join this meeting with the given code "${me}"\n`}
-            separator="Link: "
-            className={classes.share_icon}
-          >
-            <WhatsappIcon size={24} round />
-          </WhatsappShareButton>
-          <FacebookShareButton
-            url={`https://video-chat-mihir.web.app/`}
-            title={`Join this meeting with the given code "${me}"\n`}
-            className={classes.share_icon}
-          >
-            <FacebookIcon size={24} round />
-          </FacebookShareButton>
-          <TwitterShareButton
-            url={`https://video-chat-mihir.web.app/`}
-            title={`Join this meeting with the given code ${me} \n`}
-            className={classes.share_icon}
-          >
-            <TwitterIcon size={24} round className={classes.share_border} />
-          </TwitterShareButton>
+
+        <div className={classes.share_options}>
+          <CopyToClipboard text={me}>
+            <Button
+              type="primary"
+              icon={<CopyOutlined />}
+              className={classes.btn}
+              tabIndex="0"
+              onClick={() => message.success("Code copied successfully!")}
+            >
+              Copy code
+            </Button>
+          </CopyToClipboard>
+
+          <div className={classes.share_social}>
+            <WhatsappShareButton
+              url={`https://video-chat-mihir.web.app/`}
+              title={`Join this meeting with the given code ""\n`}
+              separator="Link: "
+              className={classes.share_icon}
+            >
+              <WhatsappIcon size={24} round />
+            </WhatsappShareButton>
+            <FacebookShareButton
+              url={`https://video-chat-mihir.web.app/`}
+              title={`Join this meeting with the given code ""\n`}
+              className={classes.share_icon}
+            >
+              <FacebookIcon size={24} round />
+            </FacebookShareButton>
+            <TwitterShareButton
+              url={`https://video-chat-mihir.web.app/`}
+              title={`Join this meeting with the given code  \n`}
+              className={classes.share_icon}
+            >
+              <TwitterIcon size={24} round className={classes.share_border} />
+            </TwitterShareButton>
+          </div>
         </div>
       </div>
-      <div>
+      <div style={{ marginBottom: "1rem" }}>
         <h2>Make a call</h2>
         <Input
           placeholder="Enter code to call"
@@ -135,12 +141,13 @@ const Options = () => {
             </Tooltip>
           }
         />
-        <br />
+
         {callAccepted && !callEnded ? (
           <Button
             variant="contained"
             onClick={leaveCall}
             className={classes.hang}
+            tabIndex="0"
           >
             <img src={Hang} alt="hang up" style={{ height: "15px" }} />
             &nbsp; Hang up
@@ -154,12 +161,14 @@ const Options = () => {
               else message.error("Please enter your name to call!");
             }}
             className={classes.btn}
+            style={{ marginTop: "1rem" }}
+            tabIndex="0"
           >
             Call
           </Button>
         )}
       </div>
-      <audio src={Teams} loop autpolay ref={Audio} />
+      <audio src={Teams} loop autoplay ref={Audio} />
       {call.isReceivingCall && !callAccepted && (
         <Modal
           title="Incoming Call"
@@ -191,6 +200,7 @@ const Options = () => {
                 answerCall();
                 Audio.current.pause();
               }}
+              tabIndex="0"
             >
               Answer
             </Button>
@@ -202,6 +212,7 @@ const Options = () => {
                 setIsModalVisible(false);
                 Audio.current.pause();
               }}
+              tabIndex="0"
             >
               Decline
             </Button>
