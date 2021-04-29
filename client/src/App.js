@@ -11,6 +11,7 @@ const App = () => {
       <Switch>
         <Route path="/" component={Home} />
       </Switch>
+      <Footer />
     </Router>
   );
 };

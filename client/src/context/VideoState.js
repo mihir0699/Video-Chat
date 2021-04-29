@@ -3,7 +3,10 @@ import VideoContext from "./VideoContext";
 import { io } from "socket.io-client";
 import Peer from "simple-peer";
 
-export const socket = io("https://fathomless-tundra-67025.herokuapp.com/");
+// const URL = "https://fathomless-tundra-67025.herokuapp.com/";
+const SERVER_URL = "http://localhost:5000/";
+
+export const socket = io(SERVER_URL);
 
 const VideoState = ({ children }) => {
   const [callAccepted, setCallAccepted] = useState(false);
@@ -15,6 +18,8 @@ const VideoState = ({ children }) => {
   const [me, setMe] = useState("");
   const [userName, setUserName] = useState("");
   const [otherUser, setOtherUser] = useState("");
+  const [myVdoStatus, setMyVdoStatus] = useState(true);
+  const [userVdoStatus, setUserVdoStatus] = useState();
   const [msgRcv, setMsgRcv] = useState("");
 
   const myVideo = useRef();
@@ -36,9 +41,15 @@ const VideoState = ({ children }) => {
       window.location.reload();
     });
 
+    socket.on("updateUserVideo", (currentUserVdoStatus) => {
+      if (currentUserVdoStatus !== null) setUserVdoStatus(currentUserVdoStatus);
+      else setUserVdoStatus(myVdoStatus);
+    });
+
     socket.on("callUser", ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
     });
+
     socket.on("msgRcv", ({ name, msg: value, sender }) => {
       setMsgRcv({ value, sender });
       setTimeout(() => {
@@ -61,6 +72,7 @@ const VideoState = ({ children }) => {
         signal: data,
         to: call.from,
         userName: name,
+        myVdoStatus,
       });
     });
 
@@ -96,6 +108,14 @@ const VideoState = ({ children }) => {
     });
 
     connectionRef.current = peer;
+  };
+
+  const updateVideo = () => {
+    setMyVdoStatus((currentStatus) => {
+      socket.emit("updateMyVideo", !currentStatus);
+      stream.getVideoTracks()[0].enabled = !currentStatus;
+      return !currentStatus;
+    });
   };
 
   const leaveCall = () => {
@@ -142,6 +162,11 @@ const VideoState = ({ children }) => {
         setOtherUser,
         leaveCall1,
         userName,
+        myVdoStatus,
+        setMyVdoStatus,
+        userVdoStatus,
+        setUserVdoStatus,
+        updateVideo,
       }}
     >
       {children}

@@ -1,15 +1,25 @@
 .options {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  column-gap: 3.5rem;
+  column-gap: 2rem;
   margin: 2rem auto;
   width: 90%;
-  max-width: 870px;
-  background: white;
+  max-width: 600px;
+  background: #fefefe;
   padding: 0.5rem 1rem;
-
   border-top: 5px solid dodgerblue;
   border-radius: 0.25rem;
+}
+
+@media (max-width: 600px) {
+  .options {
+    display: flex;
+    flex-direction: column;
+    max-width: 480px;
+  }
+}
+.options > * {
+  width: 100%;
 }
 .options .btn {
   margin-top: 0.5rem;
@@ -25,7 +35,7 @@
 .inputgroup {
   font-family: Gilroy-light;
   font-weight: bold;
-  letter-spacing: 3px;
+  letter-spacing: 0.09rem;
 }
 
 .inputgroup {
@@ -33,12 +43,12 @@
   max-width: 360px;
 }
 
-/* .btnDiv {
+.btnDiv {
   display: flex;
   margin-top: 1rem;
   flex-direction: row;
   justify-content: space-around;
-} */
+}
 
 .phone {
   height: 4rem;
@@ -59,7 +69,7 @@
   background-color: rgb(250, 30, 14, 0.75) !important;
   color: #8c0000 !important;
   font-weight: bold;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .share_options {

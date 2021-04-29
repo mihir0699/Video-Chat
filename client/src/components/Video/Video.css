@@ -8,7 +8,7 @@
   row-gap: 1rem;
 }
 .grid video {
-  transform: rotateY(0.5turn);
+  transform: scaleX(-1);
 }
 .input_msg {
   font-family: Gilroy-light;
@@ -16,7 +16,7 @@
   margin-top: 1rem;
 }
 .card {
-  background-color: white;
+  background-color: #fefefe;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,7 +27,7 @@
   padding: 10px 0;
 }
 .card2 {
-  background-color: white;
+  background-color: #fefefe;
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -61,7 +61,7 @@
   width: 100%;
   /* max-width: 400px; */
   /* max-height: 100%; */
-  background-color: white;
+  background-color: #fefefe;
 }
 
 .iconsDiv {
@@ -120,7 +120,7 @@
   width: 16px;
   height: 16px;
   margin: 3rem 0.2rem;
-  background: white;
+  background: #fefefe;
   border-radius: 50%;
   animation: bouncing-loader 0.6s infinite alternate;
 }

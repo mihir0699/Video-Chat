@@ -12,6 +12,8 @@ import Msg from "../../assests/msg.svg";
 import { UserOutlined, MessageOutlined } from "@ant-design/icons";
 
 import { socket } from "../../context/VideoState";
+
+// const socket = io()
 const { Search } = Input;
 const Video = () => {
   const {
@@ -32,11 +34,15 @@ const Video = () => {
     chat,
     setChat,
     userName,
+    myVdoStatus,
+    // setMyVdoStatus,
+    userVdoStatus,
+    // setUserVdoStatus,
+    updateVideo,
   } = useContext(VideoContext);
 
   const [sound, setSound] = useState(true);
-  const [vdo, setVideo] = useState(true);
-  const [userVdo, setUserVdo] = useState(true);
+
   const [sendMsg, setSendMsg] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
   socket.on("msgRcv", ({ name, msg: value, sender }) => {
@@ -47,22 +53,15 @@ const Video = () => {
     msg.timestamp = Date.now();
     setChat([...chat, msg]);
   });
+
   const dummy = useRef();
 
   useEffect(() => {
     if (dummy?.current) dummy.current.scrollIntoView({ behavior: "smooth" });
   }, [chat]);
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
+  const showModal = (showVal) => {
+    setIsModalVisible(showVal);
   };
 
   const onSearch = (value) => {
@@ -89,7 +88,7 @@ const Video = () => {
           id={callAccepted && !callEnded ? "video1" : "video3"}
         >
           <div style={{ height: "2rem" }}>
-            <h3>{vdo && name}</h3>
+            <h3>{myVdoStatus && name}</h3>
           </div>
           <div className="video-avatar-container">
             <video
@@ -99,7 +98,7 @@ const Video = () => {
               autoPlay
               className="video-active"
               style={{
-                opacity: `${vdo ? "1" : "0"}`,
+                opacity: `${myVdoStatus ? "1" : "0"}`,
               }}
             />
 
@@ -107,7 +106,7 @@ const Video = () => {
               style={{
                 backgroundColor: "#116",
                 position: "absolute",
-                opacity: `${vdo ? "-1" : "2"}`,
+                opacity: `${myVdoStatus ? "-1" : "2"}`,
               }}
               size={98}
               icon={!name && <UserOutlined />}
@@ -128,6 +127,7 @@ const Video = () => {
             >
               <i
                 className={`fa fa-microphone${sound ? "" : "-slash"}`}
+                style={{ transform: "scaleX(-1)" }}
                 aria-label={`${sound ? "mic on" : "mic off"}`}
                 aria-hidden="true"
               ></i>
@@ -148,8 +148,8 @@ const Video = () => {
               title="Chat"
               footer={null}
               visible={isModalVisible}
-              onOk={handleOk}
-              onCancel={handleCancel}
+              onOk={() => showModal(false)}
+              onCancel={() => showModal(false)}
               style={{ maxHeight: "100px" }}
             >
               {chat.length ? (
@@ -179,16 +179,9 @@ const Video = () => {
                 onSearch={onSearch}
               />
             </Modal>
-            <div
-              className="icons"
-              onClick={() => {
-                stream.getVideoTracks()[0].enabled = !stream.getVideoTracks()[0]
-                  .enabled;
-                setVideo(!vdo);
-              }}
-              tabIndex="0"
-            >
-              {vdo ? (
+            {/* ---------------------video icon--------------------- */}
+            <div className="icons" onClick={() => updateVideo()} tabIndex="0">
+              {myVdoStatus ? (
                 <img src={VideoIcon} alt="video on icon" />
               ) : (
                 <img src={VideoOff} alt="video off icon" />
@@ -197,7 +190,7 @@ const Video = () => {
           </div>
         </div>
       ) : (
-        <div class="bouncing-loader">
+        <div className="bouncing-loader">
           <div></div>
           <div></div>
           <div></div>
@@ -206,8 +199,8 @@ const Video = () => {
 
       {callAccepted && !callEnded && userVideo && (
         <div className="card2" style={{ textAlign: "center" }} id="video2">
-          <div>
-            <h3>{call.name || userName}</h3>
+          <div style={{ height: "2rem" }}>
+            <h3>{userVdoStatus && (call.name || userName)}</h3>
           </div>
 
           <div className="video-avatar-container">
@@ -217,7 +210,7 @@ const Video = () => {
               autoPlay
               className="video-active"
               style={{
-                opacity: `${userVdo ? "1" : "0"}`,
+                opacity: `${userVdoStatus ? "1" : "0"}`,
               }}
             />
 
@@ -225,7 +218,7 @@ const Video = () => {
               style={{
                 backgroundColor: "#116",
                 position: "absolute",
-                opacity: `${userVdo ? "-1" : "2"}`,
+                opacity: `${userVdoStatus ? "-1" : "2"}`,
               }}
               size={98}
               icon={!(userName || call.name) && <UserOutlined />}

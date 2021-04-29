@@ -28,12 +28,16 @@ io.on("connection", (socket) => {
     io.to(userToCall).emit("callUser", { signal: signalData, from, name });
   });
 
+  socket.on("updateMyVideo", (currentVideoStatus) => {
+    socket.broadcast.emit("updateUserVideo", currentVideoStatus);
+  });
+
   socket.on("msgUser", ({ name, to, msg, sender }) => {
     io.to(to).emit("msgRcv", { name, msg, sender });
   });
 
   socket.on("answerCall", (data) => {
-    console.log(data);
+    socket.broadcast.emit("updateUserVideo", data.myVdoStatus);
     io.to(data.to).emit("callAccepted", data);
   });
   socket.on("endCall", ({ id }) => {

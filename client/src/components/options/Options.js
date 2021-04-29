@@ -51,12 +51,8 @@ const Options = () => {
     } else Audio?.current?.pause();
   }, [isModalVisible]);
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
+  const showModal = (showVal) => {
+    setIsModalVisible(showVal);
   };
 
   const handleCancel = () => {
@@ -65,13 +61,15 @@ const Options = () => {
     window.location.reload();
   };
   useEffect(() => {
-    if (call.isReceivingCall && !callAccepted) setIsModalVisible(true);
-    else setIsModalVisible(false);
+    if (call.isReceivingCall && !callAccepted) {
+      setIsModalVisible(true);
+      setOtherUser(call.from);
+    } else setIsModalVisible(false);
   }, [call.isReceivingCall]);
 
   return (
     <div className={classes.options}>
-      <div style={{ marginBottom: "1rem" }}>
+      <div style={{ marginBottom: "0.5rem" }}>
         <h2>Account Info</h2>
         <Input
           size="large"
@@ -107,26 +105,26 @@ const Options = () => {
               separator="Link: "
               className={classes.share_icon}
             >
-              <WhatsappIcon size={24} round />
+              <WhatsappIcon size={26} round />
             </WhatsappShareButton>
             <FacebookShareButton
               url={`https://video-chat-mihir.web.app/`}
               title={`Join this meeting with the given code ""\n`}
               className={classes.share_icon}
             >
-              <FacebookIcon size={24} round />
+              <FacebookIcon size={26} round />
             </FacebookShareButton>
             <TwitterShareButton
               url={`https://video-chat-mihir.web.app/`}
               title={`Join this meeting with the given code  \n`}
               className={classes.share_icon}
             >
-              <TwitterIcon size={24} round className={classes.share_border} />
+              <TwitterIcon size={26} round className={classes.share_border} />
             </TwitterShareButton>
           </div>
         </div>
       </div>
-      <div style={{ marginBottom: "1rem" }}>
+      <div style={{ marginBottom: "0.5rem" }}>
         <h2>Make a call</h2>
         <Input
           placeholder="Enter code to call"
@@ -134,6 +132,7 @@ const Options = () => {
           className={classes.inputgroup}
           value={idToCall}
           onChange={(e) => setIdToCall(e.target.value)}
+          style={{ marginRight: "0.5rem", marginBottom: "0.5rem" }}
           prefix={<UserOutlined className="site-form-item-icon" />}
           suffix={
             <Tooltip title="Enter code of the other user">
@@ -142,6 +141,7 @@ const Options = () => {
           }
         />
 
+        {/* {true ? ( */}
         {callAccepted && !callEnded ? (
           <Button
             variant="contained"
@@ -161,63 +161,63 @@ const Options = () => {
               else message.error("Please enter your name to call!");
             }}
             className={classes.btn}
-            style={{ marginTop: "1rem" }}
             tabIndex="0"
           >
             Call
           </Button>
         )}
       </div>
-      <audio src={Teams} loop autoplay ref={Audio} />
-      {call.isReceivingCall && !callAccepted && (
-        <Modal
-          title="Incoming Call"
-          visible={isModalVisible}
-          onOk={handleOk}
-          onCancel={handleCancel}
-          footer={null}
-        >
-          {setOtherUser(call.from)}
-          <div style={{ display: "flex", justifyContent: "space-around" }}>
-            <h1>
-              {call.name} is calling you:{" "}
-              <img
-                src={Phone}
-                alt="phone ringing"
-                className={classes.phone}
-                style={{ display: "inline-block" }}
-              />
-            </h1>
-          </div>
 
-          <div className={classes.btnDiv}>
-            <Button
-              variant="contained"
-              className={classes.answer}
-              color="#29bb89"
-              icon={<PhoneOutlined />}
-              onClick={() => {
-                answerCall();
-                Audio.current.pause();
-              }}
-              tabIndex="0"
-            >
-              Answer
-            </Button>
-            <Button
-              variant="contained"
-              className={classes.decline}
-              icon={<PhoneOutlined />}
-              onClick={() => {
-                setIsModalVisible(false);
-                Audio.current.pause();
-              }}
-              tabIndex="0"
-            >
-              Decline
-            </Button>
-          </div>
-        </Modal>
+      {call.isReceivingCall && !callAccepted && (
+        <>
+          <audio src={Teams} loop ref={Audio} />
+          <Modal
+            title="Incoming Call"
+            visible={isModalVisible}
+            onOk={() => showModal(false)}
+            onCancel={handleCancel}
+            footer={null}
+          >
+            <div style={{ display: "flex", justifyContent: "space-around" }}>
+              <h1>
+                {call.name} is calling you:{" "}
+                <img
+                  src={Phone}
+                  alt="phone ringing"
+                  className={classes.phone}
+                  style={{ display: "inline-block" }}
+                />
+              </h1>
+            </div>
+            <div className={classes.btnDiv}>
+              <Button
+                variant="contained"
+                className={classes.answer}
+                color="#29bb89"
+                icon={<PhoneOutlined />}
+                onClick={() => {
+                  answerCall();
+                  Audio.current.pause();
+                }}
+                tabIndex="0"
+              >
+                Answer
+              </Button>
+              <Button
+                variant="contained"
+                className={classes.decline}
+                icon={<PhoneOutlined />}
+                onClick={() => {
+                  setIsModalVisible(false);
+                  Audio.current.pause();
+                }}
+                tabIndex="0"
+              >
+                Decline
+              </Button>
+            </div>
+          </Modal>
+        </>
       )}
     </div>
   );
