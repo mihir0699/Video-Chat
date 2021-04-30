@@ -35,9 +35,7 @@ const Video = () => {
     setChat,
     userName,
     myVdoStatus,
-    // setMyVdoStatus,
     userVdoStatus,
-    // setUserVdoStatus,
     updateVideo,
   } = useContext(VideoContext);
 
@@ -113,7 +111,6 @@ const Video = () => {
             >
               {name}
             </Avatar>
-            {/* <img src={Profile} alt="user avatar" className="avatar" />} */}
           </div>
 
           <div className="iconsDiv">
@@ -132,7 +129,7 @@ const Video = () => {
                 aria-hidden="true"
               ></i>
             </div>
-            {/* {true && ( */}
+
             {callAccepted && !callEnded && (
               <div
                 className="icons"
@@ -179,7 +176,7 @@ const Video = () => {
                 onSearch={onSearch}
               />
             </Modal>
-            {/* ---------------------video icon--------------------- */}
+
             <div className="icons" onClick={() => updateVideo()} tabIndex="0">
               {myVdoStatus ? (
                 <img src={VideoIcon} alt="video on icon" />
@@ -225,7 +222,6 @@ const Video = () => {
             >
               {userName || call.name}
             </Avatar>
-            {/* <img src={Profile} alt="user avatar" className="avatar" />} */}
           </div>
         </div>
       )}

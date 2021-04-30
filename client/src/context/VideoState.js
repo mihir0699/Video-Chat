@@ -105,6 +105,7 @@ const VideoState = ({ children }) => {
       setCallAccepted(true);
       setUserName(userName);
       peer.signal(signal);
+      socket.emit("updateMyVideo", myVdoStatus);
     });
 
     connectionRef.current = peer;
