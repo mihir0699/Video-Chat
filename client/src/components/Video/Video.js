@@ -1,17 +1,19 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import VideoContext from "../../context/VideoContext";
 import "./Video.css";
-import { Card, Modal, Button, Input, notification } from "antd";
+import { Card, Modal, Button, Input, notification, Avatar } from "antd";
 import Man from "../../assests/man.svg";
 import VideoIcon from "../../assests/video.svg";
 import { io } from "socket.io-client";
 import VideoOff from "../../assests/video-off.svg";
-import Profile from "../../assests/profile.svg";
+// import Profile from "../../assests/profile.svg";
 import Msg_Illus from "../../assests/msg_illus.svg";
 import Msg from "../../assests/msg.svg";
-import { MessageOutlined } from "@ant-design/icons";
+import { UserOutlined, MessageOutlined } from "@ant-design/icons";
 
 import { socket } from "../../context/VideoState";
+
+// const socket = io()
 const { Search } = Input;
 const Video = () => {
   const {
@@ -32,11 +34,13 @@ const Video = () => {
     chat,
     setChat,
     userName,
+    myVdoStatus,
+    userVdoStatus,
+    updateVideo,
   } = useContext(VideoContext);
 
   const [sound, setSound] = useState(true);
-  const [vdo, setVideo] = useState(true);
-  const [userVdo, setUserVdo] = useState(true);
+
   const [sendMsg, setSendMsg] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
   socket.on("msgRcv", ({ name, msg: value, sender }) => {
@@ -47,22 +51,15 @@ const Video = () => {
     msg.timestamp = Date.now();
     setChat([...chat, msg]);
   });
+
   const dummy = useRef();
 
   useEffect(() => {
     if (dummy?.current) dummy.current.scrollIntoView({ behavior: "smooth" });
   }, [chat]);
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
+  const showModal = (showVal) => {
+    setIsModalVisible(showVal);
   };
 
   const onSearch = (value) => {
@@ -88,18 +85,32 @@ const Video = () => {
           className="card"
           id={callAccepted && !callEnded ? "video1" : "video3"}
         >
-          <div style={{ placeSelf: "center" }}>
-            <h3>{name}</h3>
+          <div style={{ height: "2rem" }}>
+            <h3>{myVdoStatus && name}</h3>
           </div>
-          <div style={{ position: "relative" }}>
+          <div className="video-avatar-container">
             <video
               playsInline
               muted
               ref={myVideo}
               autoPlay
-              className={vdo ? "card1" : "hidden"}
+              className="video-active"
+              style={{
+                opacity: `${myVdoStatus ? "1" : "0"}`,
+              }}
             />
-            {!vdo && <img src={Profile} alt="user avatar" className="avatar" />}
+
+            <Avatar
+              style={{
+                backgroundColor: "#116",
+                position: "absolute",
+                opacity: `${myVdoStatus ? "-1" : "2"}`,
+              }}
+              size={98}
+              icon={!name && <UserOutlined />}
+            >
+              {name}
+            </Avatar>
           </div>
 
           <div className="iconsDiv">
@@ -109,23 +120,23 @@ const Video = () => {
                 stream.getAudioTracks()[0].enabled = !sound;
                 setSound(!sound);
               }}
+              tabIndex="0"
             >
-              {!sound ? (
-                <i
-                  className="fa fa-microphone-slash"
-                  id="icon"
-                  aria-hidden="true"
-                />
-              ) : (
-                <i class="fa fa-microphone " id="icon" aria-hidden="true"></i>
-              )}
+              <i
+                className={`fa fa-microphone${sound ? "" : "-slash"}`}
+                style={{ transform: "scaleX(-1)" }}
+                aria-label={`${sound ? "mic on" : "mic off"}`}
+                aria-hidden="true"
+              ></i>
             </div>
+
             {callAccepted && !callEnded && (
               <div
                 className="icons"
                 onClick={() => {
                   setIsModalVisible(!isModalVisible);
                 }}
+                tabIndex="0"
               >
                 <img src={Msg} alt="chat icon" />
               </div>
@@ -134,15 +145,15 @@ const Video = () => {
               title="Chat"
               footer={null}
               visible={isModalVisible}
-              onOk={handleOk}
-              onCancel={handleCancel}
+              onOk={() => showModal(false)}
+              onCancel={() => showModal(false)}
               style={{ maxHeight: "100px" }}
             >
               {chat.length ? (
                 <div className="msg_flex">
                   {chat.map((msg) => (
                     <div
-                      className={msg.type == "sent" ? "msg_sent" : "msg_rcv"}
+                      className={msg.type === "sent" ? "msg_sent" : "msg_rcv"}
                     >
                       {msg.msg}
                     </div>
@@ -165,24 +176,18 @@ const Video = () => {
                 onSearch={onSearch}
               />
             </Modal>
-            <div
-              className="icons"
-              onClick={() => {
-                stream.getVideoTracks()[0].enabled = !stream.getVideoTracks()[0]
-                  .enabled;
-                setVideo(!vdo);
-              }}
-            >
-              {vdo ? (
-                <img src={VideoIcon} alt="video icon" id="icon" />
+
+            <div className="icons" onClick={() => updateVideo()} tabIndex="0">
+              {myVdoStatus ? (
+                <img src={VideoIcon} alt="video on icon" />
               ) : (
-                <img src={VideoOff} alt="video icon" id="icon" />
+                <img src={VideoOff} alt="video off icon" />
               )}
             </div>
           </div>
         </div>
       ) : (
-        <div class="bouncing-loader">
+        <div className="bouncing-loader">
           <div></div>
           <div></div>
           <div></div>
@@ -191,20 +196,32 @@ const Video = () => {
 
       {callAccepted && !callEnded && userVideo && (
         <div className="card2" style={{ textAlign: "center" }} id="video2">
-          <div style={{ alignSelf: "center" }}>
-            {call.from ? (
-              <h3 style={{ alignSelf: "center" }}>{call.name}</h3>
-            ) : (
-              <h3 style={{ alignSelf: "center" }}>{userName}</h3>
-            )}
+          <div style={{ height: "2rem" }}>
+            <h3>{userVdoStatus && (call.name || userName)}</h3>
           </div>
-          <div style={{ position: "relative" }}>
+
+          <div className="video-avatar-container">
             <video
               playsInline
-              autoPlay
               ref={userVideo}
-              className={userVideo ? "card1" : "hidden"}
+              autoPlay
+              className="video-active"
+              style={{
+                opacity: `${userVdoStatus ? "1" : "0"}`,
+              }}
             />
+
+            <Avatar
+              style={{
+                backgroundColor: "#116",
+                position: "absolute",
+                opacity: `${userVdoStatus ? "-1" : "2"}`,
+              }}
+              size={98}
+              icon={!(userName || call.name) && <UserOutlined />}
+            >
+              {userName || call.name}
+            </Avatar>
           </div>
         </div>
       )}

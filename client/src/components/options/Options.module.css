@@ -1,27 +1,46 @@
 .options {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  column-gap: 5rem;
+  column-gap: 2rem;
   margin: 2rem auto;
-  width: 60%;
-  background: white;
+  width: 90%;
+  max-width: 600px;
+  background: #fefefe;
   padding: 0.5rem 1rem;
-  padding-bottom: 0;
   border-top: 5px solid dodgerblue;
-  border-radius: 0.2rem;
+  border-radius: 0.25rem;
 }
 
+@media (max-width: 600px) {
+  .options {
+    display: flex;
+    flex-direction: column;
+    max-width: 480px;
+  }
+}
+.options > * {
+  width: 100%;
+}
+.options .btn {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: none;
+}
+.options .btn:hover {
+  opacity: 0.9;
+}
+.options .btn:focus {
+  outline: 2px solid #000;
+}
 .inputgroup {
   font-family: Gilroy-light;
   font-weight: bold;
-  letter-spacing: 3px;
+  letter-spacing: 0.09rem;
 }
 
-.options .btn {
-  margin-top: 1rem;
-}
 .inputgroup {
-  width: 80%;
+  width: 100%;
+  max-width: 360px;
 }
 
 .btnDiv {
@@ -50,23 +69,21 @@
   background-color: rgb(250, 30, 14, 0.75) !important;
   color: #8c0000 !important;
   font-weight: bold;
-  margin-top: 1rem;
-}
-.share_icon {
-  margin: 0.5rem 0.5rem;
-  margin-left: 0;
-}
-.share_border:focus,
-.share_border:active,
-.share_border {
-  outline: none !important;
-  border: none !important;
-  outline-offset: none !important;
+  margin-top: 0.5rem;
 }
 
-@media only screen and (max-width: 600px) {
-  .options {
-    width: 90%;
-    padding-bottom: 1rem;
-  }
+.share_options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.share_social {
+  display: flex;
+  /* margin-top: 1rem; */
+}
+
+.share_icon {
+  display: flex;
+  margin-left: 0.4rem;
 }
