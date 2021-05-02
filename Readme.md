@@ -5,13 +5,13 @@
 This is a video calling application where users can call other user and will also have the capabiltiy to mute their mic and audio. Their is also real time chat functionality.
 It's also a modern PWA so users can install it on their devices like other native apps.
 
-**Project Link** - ***https://video-chat-mihir.netlify.app/***
+**Project Link** - ***https://video-chat-mihir.vercel.app/***
 
 ## Features and Functionalities 😃
 
 - Video Call with others
 - Mute audio/video
-- Instantly join video call with a code
+- Instantly join a video call with a code
 - Chat in real-time
 - Chat Notifications
 - Install it as a PWA (Progressive Web App) on your device
