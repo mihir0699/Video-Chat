@@ -48,8 +48,9 @@ It's also a modern PWA so users can install it on their devices like other nativ
 - [Node.js](https://nodejs.org/en/)
 - [Ant Design](https://ant.design/)
 
-## 🤩Feel free to give this repo a ⭐ if you like this repo and want to appreciate my efforts
-
+## 🤩Feel free to give this repo a ⭐ if you like this repo and want to appreciate our efforts
+#### Contributor: [Gautam Tiwari](https://linkedin.com/in/gautamtiwari003)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com)
-<a href="https://www.buymeacoffee.com/mihir0699" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+<a href="https://www.buymeacoffee.com/mihir0699" target="_blank">
+<img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>

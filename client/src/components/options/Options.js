@@ -126,6 +126,7 @@ const Options = () => {
       </div>
       <div style={{ marginBottom: "0.5rem" }}>
         <h2>Make a call</h2>
+
         <Input
           placeholder="Enter code to call"
           size="large"
@@ -141,7 +142,6 @@ const Options = () => {
           }
         />
 
-        {/* {true ? ( */}
         {callAccepted && !callEnded ? (
           <Button
             variant="contained"

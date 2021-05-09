@@ -20,6 +20,8 @@ const VideoState = ({ children }) => {
   const [otherUser, setOtherUser] = useState("");
   const [myVdoStatus, setMyVdoStatus] = useState(true);
   const [userVdoStatus, setUserVdoStatus] = useState();
+  const [myMicStatus, setMyMicStatus] = useState(true);
+  const [userMicStatus, setUserMicStatus] = useState();
   const [msgRcv, setMsgRcv] = useState("");
 
   const myVideo = useRef();
@@ -41,9 +43,21 @@ const VideoState = ({ children }) => {
       window.location.reload();
     });
 
-    socket.on("updateUserVideo", (currentUserVdoStatus) => {
-      if (currentUserVdoStatus !== null) setUserVdoStatus(currentUserVdoStatus);
-      else setUserVdoStatus(myVdoStatus);
+    socket.on("updateUserMedia", ({ type, currentMediaStatus }) => {
+      if (currentMediaStatus !== null || currentMediaStatus !== []) {
+        switch (type) {
+          case "video":
+            setUserVdoStatus(currentMediaStatus);
+            break;
+          case "mic":
+            setUserMicStatus(currentMediaStatus);
+            break;
+          default:
+            setUserMicStatus(currentMediaStatus[0]);
+            setUserVdoStatus(currentMediaStatus[1]);
+            break;
+        }
+      }
     });
 
     socket.on("callUser", ({ from, name: callerName, signal }) => {
@@ -72,7 +86,8 @@ const VideoState = ({ children }) => {
         signal: data,
         to: call.from,
         userName: name,
-        myVdoStatus,
+        type: "both",
+        myMediaStatus: [myMicStatus, myVdoStatus],
       });
     });
 
@@ -105,7 +120,10 @@ const VideoState = ({ children }) => {
       setCallAccepted(true);
       setUserName(userName);
       peer.signal(signal);
-      socket.emit("updateMyVideo", myVdoStatus);
+      socket.emit("updateMyMedia", {
+        type: "both",
+        currentMediaStatus: [myMicStatus, myVdoStatus],
+      });
     });
 
     connectionRef.current = peer;
@@ -113,8 +131,21 @@ const VideoState = ({ children }) => {
 
   const updateVideo = () => {
     setMyVdoStatus((currentStatus) => {
-      socket.emit("updateMyVideo", !currentStatus);
+      socket.emit("updateMyMedia", {
+        type: "video",
+        currentMediaStatus: !currentStatus,
+      });
       stream.getVideoTracks()[0].enabled = !currentStatus;
+      return !currentStatus;
+    });
+  };
+  const updateMic = () => {
+    setMyMicStatus((currentStatus) => {
+      socket.emit("updateMyMedia", {
+        type: "mic",
+        currentMediaStatus: !currentStatus,
+      });
+      stream.getAudioTracks()[0].enabled = !currentStatus;
       return !currentStatus;
     });
   };
@@ -168,6 +199,9 @@ const VideoState = ({ children }) => {
         userVdoStatus,
         setUserVdoStatus,
         updateVideo,
+        myMicStatus,
+        userMicStatus,
+        updateMic,
       }}
     >
       {children}

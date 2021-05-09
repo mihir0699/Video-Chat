@@ -37,9 +37,10 @@ const Video = () => {
     myVdoStatus,
     userVdoStatus,
     updateVideo,
+    myMicStatus,
+    userMicStatus,
+    updateMic,
   } = useContext(VideoContext);
-
-  const [sound, setSound] = useState(true);
 
   const [sendMsg, setSendMsg] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -97,6 +98,7 @@ const Video = () => {
               className="video-active"
               style={{
                 opacity: `${myVdoStatus ? "1" : "0"}`,
+                transform: "scaleX(-1)",
               }}
             />
 
@@ -117,15 +119,14 @@ const Video = () => {
             <div
               className="icons"
               onClick={() => {
-                stream.getAudioTracks()[0].enabled = !sound;
-                setSound(!sound);
+                updateMic();
               }}
               tabIndex="0"
             >
               <i
-                className={`fa fa-microphone${sound ? "" : "-slash"}`}
+                className={`fa fa-microphone${myMicStatus ? "" : "-slash"}`}
                 style={{ transform: "scaleX(-1)" }}
-                aria-label={`${sound ? "mic on" : "mic off"}`}
+                aria-label={`${myMicStatus ? "mic on" : "mic off"}`}
                 aria-hidden="true"
               ></i>
             </div>
@@ -222,6 +223,20 @@ const Video = () => {
             >
               {userName || call.name}
             </Avatar>
+            {!userMicStatus && (
+              <i
+                style={{
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  padding: "0.3rem",
+                  backgroundColor: "#fefefebf",
+                }}
+                className="fad fa-volume-mute fa-2x"
+                aria-hidden="true"
+                aria-label="microphone muted"
+              ></i>
+            )}
           </div>
         </div>
       )}
