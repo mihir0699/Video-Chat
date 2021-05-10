@@ -7,6 +7,9 @@ It's also a modern PWA so users can install it on their devices like other nativ
 
 **Project Link** - ***https://video-chat-mihir.vercel.app/***
 
+
+**Demo Video** - ***https://youtu.be/zsyEx2sVi6c***
+
 ## Features and Functionalities 😃
 
 - Video Call with others
