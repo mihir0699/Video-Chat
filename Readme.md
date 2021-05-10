@@ -53,7 +53,7 @@ It's also a modern PWA so users can install it on their devices like other nativ
 
 ## 🤩Feel free to give this repo a ⭐ if you like this repo and want to appreciate my efforts
 
-<a href="https://www.producthunt.com/posts/video-chat?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-video-chat" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=295383&theme=light" alt="Video Chat - Video Calling and chatting app built using React.js | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+<a href="https://www.producthunt.com/posts/video-chat?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-video-chat" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=295383&theme=light" alt="Video Chat - Video Calling and chatting app built using React.js | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com)
