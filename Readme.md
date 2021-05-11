@@ -5,13 +5,16 @@
 This is a video calling application where users can call other user and will also have the capabiltiy to mute their mic and audio. Their is also real time chat functionality.
 It's also a modern PWA so users can install it on their devices like other native apps.
 
-**Project Link** - ***https://video-chat-mihir.netlify.app/***
+**Project Link** - ***https://video-chat-mihir.vercel.app/***
+
+
+**Demo Video** - ***https://youtu.be/zsyEx2sVi6c***
 
 ## Features and Functionalities 😃
 
 - Video Call with others
 - Mute audio/video
-- Instantly join video call with a code
+- Instantly join a video call with a code
 - Chat in real-time
 - Chat Notifications
 - Install it as a PWA (Progressive Web App) on your device
@@ -49,6 +52,8 @@ It's also a modern PWA so users can install it on their devices like other nativ
 - [Ant Design](https://ant.design/)
 
 ## 🤩Feel free to give this repo a ⭐ if you like this repo and want to appreciate my efforts
+
+<a href="https://www.producthunt.com/posts/video-chat?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-video-chat" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=295383&theme=light" alt="Video Chat - Video Calling and chatting app built using React.js | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com)
