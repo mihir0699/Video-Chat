@@ -21,7 +21,7 @@ io.on("connection", (socket) => {
   socket.emit("me", socket.id);
 
   socket.on("disconnect", () => {
-    socket.broadcast.emit("callEnded");
+    socket.broadcast.emit("endCall");
   });
 
   socket.on("callUser", ({ userToCall, signalData, from, name }) => {
@@ -32,8 +32,9 @@ io.on("connection", (socket) => {
     });
   });
 
-  socket.on("updateMyVideo", (currentVideoStatus) => {
-    socket.broadcast.emit("updateUserVideo", currentVideoStatus);
+  socket.on("updateMyMedia", ({ type, currentMediaStatus }) => {
+    console.log("updateMyMedia");
+    socket.broadcast.emit("updateUserMedia", { type, currentMediaStatus });
   });
 
   socket.on("msgUser", ({ name, to, msg, sender }) => {
@@ -41,7 +42,10 @@ io.on("connection", (socket) => {
   });
 
   socket.on("answerCall", (data) => {
-    socket.broadcast.emit("updateUserVideo", data.myVdoStatus);
+    socket.broadcast.emit("updateUserMedia", {
+      type: data.type,
+      currentMediaStatus: data.myMediaStatus,
+    });
     io.to(data.to).emit("callAccepted", data);
   });
   socket.on("endCall", ({ id }) => {

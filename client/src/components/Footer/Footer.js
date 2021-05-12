@@ -16,7 +16,9 @@ const Footer = () => {
         Mihir Gupta
       </a>
       <br />
-      Improved By{" "}
+
+      Contributed/Improved By{" "}
+
       <a
         className="footer__link"
         href="https://linkedin.com/in/gautamtiwari003"
