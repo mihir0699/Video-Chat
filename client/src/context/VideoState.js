@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import VideoContext from "./VideoContext";
 import { io } from "socket.io-client";
 import Peer from "simple-peer";
+import { message } from "antd";
 
 const URL = "https://fathomless-tundra-67025.herokuapp.com/";
 // const SERVER_URL = "http://localhost:5000/";
@@ -23,10 +24,12 @@ const VideoState = ({ children }) => {
   const [myMicStatus, setMyMicStatus] = useState(true);
   const [userMicStatus, setUserMicStatus] = useState();
   const [msgRcv, setMsgRcv] = useState("");
+  const [screenShare, setScreenShare] = useState(false)
 
   const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
+  const screenTrackRef = useRef();
 
   useEffect(() => {
     navigator.mediaDevices
@@ -98,6 +101,7 @@ const VideoState = ({ children }) => {
     peer.signal(call.signal);
 
     connectionRef.current = peer;
+    console.log(connectionRef.current);
   };
 
   const callUser = (id) => {
@@ -127,6 +131,7 @@ const VideoState = ({ children }) => {
     });
 
     connectionRef.current = peer;
+    console.log(connectionRef.current);
   };
 
   const updateVideo = () => {
@@ -139,6 +144,7 @@ const VideoState = ({ children }) => {
       return !currentStatus;
     });
   };
+
   const updateMic = () => {
     setMyMicStatus((currentStatus) => {
       socket.emit("updateMyMedia", {
@@ -149,6 +155,74 @@ const VideoState = ({ children }) => {
       return !currentStatus;
     });
   };
+
+  
+    //SCREEN SHARING 
+    const handleScreenSharing = () => {
+
+      if(!myVdoStatus){
+        message.error("Turn on your video to share the content", 2);
+        return;
+      }
+    
+      if (!screenShare) {
+        navigator.mediaDevices
+          .getDisplayMedia({ cursor: true })
+          .then((currentStream) => {
+            const screenTrack = currentStream.getTracks()[0];
+
+  
+              // replaceTrack (oldTrack, newTrack, oldStream);
+              connectionRef.current.replaceTrack(
+                connectionRef.current.streams[0]
+                  .getTracks()
+                  .find((track) => track.kind === 'video'),
+                screenTrack,
+                stream
+              );
+  
+            // Listen click end
+            screenTrack.onended = () => {
+              connectionRef.current.replaceTrack(
+                  screenTrack,
+                  connectionRef.current.streams[0]
+                    .getTracks()
+                    .find((track) => track.kind === 'video'),
+                  stream
+                );
+
+              myVideo.current.srcObject = stream;
+              setScreenShare(false);
+            };
+  
+            myVideo.current.srcObject = currentStream;
+            screenTrackRef.current = screenTrack;
+            setScreenShare(true);
+          }).catch((error) => {
+            console.log("No stream for sharing")
+          });
+      } else {
+        screenTrackRef.current.onended();
+      }
+    };
+
+     //full screen
+     const fullScreen = (e) => {
+      const elem = e.target;
+  
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        /* Firefox */
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) {
+        /* Chrome, Safari & Opera */
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        /* IE/Edge */
+        elem.msRequestFullscreen();
+      }
+    };
 
   const leaveCall = () => {
     setCallEnded(true);
@@ -202,6 +276,9 @@ const VideoState = ({ children }) => {
         myMicStatus,
         userMicStatus,
         updateMic,
+        screenShare,
+        handleScreenSharing,
+        fullScreen
       }}
     >
       {children}
