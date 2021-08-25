@@ -9,6 +9,7 @@ import VideoOff from "../../assests/video-off.svg";
 // import Profile from "../../assests/profile.svg";
 import Msg_Illus from "../../assests/msg_illus.svg";
 import Msg from "../../assests/msg.svg";
+import ScreenShare from '../../assests/share_screen.svg'
 import { UserOutlined, MessageOutlined } from "@ant-design/icons";
 
 import { socket } from "../../context/VideoState";
@@ -35,6 +36,9 @@ const Video = () => {
     setChat,
     userName,
     myVdoStatus,
+    screenShare,
+    fullScreen,
+    handleScreenSharing,
     userVdoStatus,
     updateVideo,
     myMicStatus,
@@ -93,12 +97,12 @@ const Video = () => {
             <video
               playsInline
               muted
+              onClick={fullScreen}
               ref={myVideo}
               autoPlay
               className="video-active"
               style={{
                 opacity: `${myVdoStatus ? "1" : "0"}`,
-                transform: "scaleX(-1)",
               }}
             />
 
@@ -177,6 +181,15 @@ const Video = () => {
                 onSearch={onSearch}
               />
             </Modal>
+            {callAccepted && !callEnded && (
+              <div
+                className="icons"
+                onClick={() => handleScreenSharing()} 
+                tabIndex="0"
+              >
+                <img src={ScreenShare} alt="share screen" />
+              </div>
+            )}
 
             <div className="icons" onClick={() => updateVideo()} tabIndex="0">
               {myVdoStatus ? (
@@ -204,7 +217,8 @@ const Video = () => {
           <div className="video-avatar-container">
             <video
               playsInline
-              ref={userVideo}
+              ref={userVideo}             
+              onClick={fullScreen}
               autoPlay
               className="video-active"
               style={{

@@ -47,8 +47,8 @@
 
 .video-active {
   width: 100%;
-
-  background-color: #fefefe;
+    background-color: #fefefe;
+  height: 300px;
 }
 
 .iconsDiv {
