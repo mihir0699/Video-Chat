@@ -19,9 +19,10 @@ It's also a modern PWA so users can install it on their devices like other nativ
 - Instantly join a video call with a code
 - Chat in real-time
 - Chat Notifications
+-  Now, supports real-time screen sharing also (Thanks to [chand10-beg](https://github.com/chand10-beg))
 - Install it as a PWA (Progressive Web App) on your device
 - Unlimited duration calls
-- Share code instantly on social media platforms
+- Share joining code instantly on social media platforms
 - Simple and intuitive UI
 
 ## Screenshots 📸
