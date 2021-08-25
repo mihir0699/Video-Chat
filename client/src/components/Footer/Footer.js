@@ -15,19 +15,6 @@ const Footer = () => {
       >
         Mihir Gupta
       </a>
-      <br />
-
-      Contributed/Improved By{" "}
-
-      <a
-        className="footer__link"
-        href="https://linkedin.com/in/gautamtiwari003"
-        target="_blank"
-        style={{ color: "#fdfdfd" }}
-        rel="noreferrer"
-      >
-        Gautam Tiwari
-      </a>
     </footer>
   );
 };

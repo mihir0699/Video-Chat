@@ -23,6 +23,7 @@
   border-image-slice: 1;
   padding: 10px 0;
 }
+
 .card2 {
   background-color: #fefefe;
   display: flex;
@@ -47,7 +48,7 @@
 
 .video-active {
   width: 100%;
-    background-color: #fefefe;
+  background-color: #fefefe;
   height: 300px;
 }
 
