@@ -211,7 +211,7 @@ const Video = () => {
       {callAccepted && !callEnded && userVideo && (
         <div className="card2" style={{ textAlign: "center" }} id="video2">
           <div style={{ height: "2rem" }}>
-            <h3>{userVdoStatus && (call.name || userName)}</h3>
+            <h3 className="theme_text">{userVdoStatus && (call.name || userName)}</h3>
           </div>
 
           <div className="video-avatar-container">

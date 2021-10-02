@@ -47,10 +47,10 @@
   /* background-color: #000; */
 }
 
-.inputgroup::placeholder
+/* .input_container
 {
-    background-color: #000;
-}
+
+} */
 
 .inputgroup {
   width: 100%;

@@ -87,6 +87,22 @@ const Options = () => {
           className={classes.inputgroup}
         />
 
+        {/* <div className={classes.input_container}>
+            <UserOutlined />
+            <input
+                className={classes.custom_input}
+                size="large"
+                placeholder="Your name"
+                maxLength={15}
+                suffix={<small>{name.length}/15</small>}
+                value={name}
+                onChange={(e) => {
+                    setName(e.target.value);
+                    localStorage.setItem("name", e.target.value);
+                }} />
+            {name.length}/15
+        </div>
+         */}
         <div className={classes.share_options}>
           <CopyToClipboard text={me}>
             <Button

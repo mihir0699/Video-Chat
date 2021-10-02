@@ -56,7 +56,7 @@
 
 .video-active {
   width: 100%;
-  background-color: var(--background-color);
+  background-color: var(--card-background-color);
   height: 300px;
   transition: 0.5s;
 }

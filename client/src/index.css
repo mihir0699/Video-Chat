@@ -16,38 +16,38 @@ body {
   margin: 0;
   padding: 0;
   font-family: Gilroy !important;
-  background-color: #00b4dbac !important;
-  background: linear-gradient(
-    to right,
-    hsl(200, 100%, 40%),
-    hsl(191, 100%, 43%)
-  );
+  background: linear-gradient(to right, var(--background-color-from), var(--background-color-to));
+  transition: all 0.5s;
 }
 
 .theme-light
 {
-    --background-color: #eaedf0e7;
+    --background-color-from: hsl(200, 100%, 40%);
+    --background-color-to: hsl(191, 100%, 43%);
     --icons-background-color: #e4e4e4e7;
     --options-background: #ffffff;
     --text-color-first: #000000;
     --card-background-color: #ffffff;
     --toggle-border-color: #000;
     --toggle-color: #ffffff;
-    --bouncing-background-color: rgb(0, 170, 170);
-    --footer-background: rgb(141, 203, 253);
-    --footer-text-color-first: rgb(0, 124, 207);
+    --bouncing-background-color: rgb(195, 219, 219);
+    --footer-background: transparent;
+    --footer-border: rgba(0, 0, 0, 0.2);
+    --footer-text-color-first: #000000;
 }
 
 .theme-dark
 {
-    --background-color: #161616;
-    --icons-background-color: #575757;
+    --background-color-from: hsl(200, 95%, 7%);
+    --background-color-to: hsl(191, 100%, 11%);
+    --icons-background-color: #616161;
     --options-background: rgb(54, 54, 54);
     --text-color-first: #cacaca;
     --card-background-color: rgb(54, 54, 54);
     --toggle-border-color: #fff;
     --toggle-color: #292929;
     --bouncing-background-color: rgb(205, 253, 255);
-    --footer-background: rgb(25, 45, 134);
+    --footer-background: transparent;
+    --footer-border: rgba(221, 221, 221, 0.2);
     --footer-text-color-first: rgb(175, 239, 255);
 } 
