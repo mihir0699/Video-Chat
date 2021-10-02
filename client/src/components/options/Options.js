@@ -27,6 +27,20 @@ import { socket } from "../../context/VideoState";
 const Options = () => {
   const [idToCall, setIdToCall] = useState("");
 
+  const inputEl = useRef(null);
+
+  const onDivClick = () => {
+    // `current` points to the mounted text input element
+    inputEl.current.focus();
+  };
+
+  const inputEl1 = useRef(null);
+
+  const onDivClick1 = () => {
+    // `current` points to the mounted text input element
+    inputEl1.current.focus();
+  };
+
   const [isModalVisible, setIsModalVisible] = useState(false);
   const Audio = useRef();
   const {
@@ -73,7 +87,7 @@ const Options = () => {
     <div className={classes.options}>
       <div style={{ marginBottom: "0.5rem" }}>
         <h2 className={classes.theme_text}>Account Info</h2>
-        <Input
+        {/* <Input
           size="large"
           placeholder="Your name"
           prefix={<UserOutlined />}
@@ -85,11 +99,12 @@ const Options = () => {
             localStorage.setItem("name", e.target.value);
           }}
           className={classes.inputgroup}
-        />
+        /> */}
 
-        {/* <div className={classes.input_container}>
-            <UserOutlined />
+        <div className={classes.input_container} onClick={onDivClick}>
+            <span className={classes.leftIcon}><UserOutlined /></span>
             <input
+                ref={inputEl}
                 className={classes.custom_input}
                 size="large"
                 placeholder="Your name"
@@ -100,9 +115,10 @@ const Options = () => {
                     setName(e.target.value);
                     localStorage.setItem("name", e.target.value);
                 }} />
-            {name.length}/15
+                <span className={classes.counter}>{name.length}/15</span>
+            
         </div>
-         */}
+        
         <div className={classes.share_options}>
           <CopyToClipboard text={me}>
             <Button
@@ -145,7 +161,7 @@ const Options = () => {
       <div style={{ marginBottom: "0.5rem" }}>
         <h2 className={classes.theme_text}>Make a call</h2>
 
-        <Input
+        {/* <Input
         
           placeholder="Enter code to call"
           size="large"
@@ -159,7 +175,25 @@ const Options = () => {
               <InfoCircleOutlined style={{ color: "rgba(0,0,0,.45)" }} />
             </Tooltip>
           }
-        />
+        /> */}
+
+        <div className={classes.input_container1} onClick={onDivClick1}>
+            <span className={classes.leftIcon}><UserOutlined className="site-form-item-icon" /></span>
+            <input
+                ref={inputEl1}
+                className={classes.custom_input}
+                size="large"
+                placeholder="Enter code to call"
+                suffix={<small>{name.length}/15</small>}
+                value={idToCall}
+                onChange={(e) => setIdToCall(e.target.value)}
+                />
+            <span className={classes.tooltip}>
+                <Tooltip title="Enter code of the other user">
+                    <InfoCircleOutlined />
+                </Tooltip>    
+            </span>
+        </div>
 
         <div className={classes.call_toggle_container}>
             <div>

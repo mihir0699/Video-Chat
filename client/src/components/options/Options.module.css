@@ -10,7 +10,7 @@
   border-top: 5px solid dodgerblue;
   border-radius: 0.25rem;
   color: var(--text-color-first);
-    transition: 0.5s;
+  transition: 0.3s;
 }
 
 .theme_text
@@ -47,10 +47,121 @@
   /* background-color: #000; */
 }
 
-/* .input_container
+.input_container
 {
+    border: 1.5px solid var(--input-border);
+    /* transition: 0.3s; */
+    height: 40px;
+    border-radius: 2px;
+    transition: 0.3s;
+    display: inline-flex;
+    padding: 0px 11px;
+    background-color: var(--input-background);
+    /* max-width: 360px; */
+    width: 100%;
+    line-height: 1.5715;
+    letter-spacing: 0.09rem;
+    font-size: 16px;
+    font-family: Gilroy-light;
+    transition: 0.3s;
+}
 
-} */
+.input_container:hover
+{
+    border: 1px solid var(--input-hover-border);
+    transition: 0.3s;
+}
+
+.input_container:focus-within
+{
+    border: 1px solid var(--input-hover-border);
+    box-shadow: 0 0 0 2px var(--input-box-shadow);
+    transition: 0.3s;
+}
+
+.input_container1
+{
+    border: 1.5px solid var(--input-border);
+    /* transition: 0.3s; */
+    height: 40px;
+    border-radius: 2px;
+    transition: 0.3s;
+    display: inline-flex;
+    padding: 0px 11px;
+    background-color: var(--input-background);
+    /* max-width: 360px; */
+    width: 100%;
+    line-height: 1.5715;
+    letter-spacing: 0.09rem;
+    font-size: 16px;
+    font-family: Gilroy-light;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: 0.3s;
+}
+
+.input_container1:hover
+{
+    border: 1px solid var(--input-hover-border);
+    transition: 0.3s;
+}
+
+.input_container1:focus-within
+{
+    border: 1px solid var(--input-hover-border);
+    box-shadow: 0 0 0 2px var(--input-box-shadow);
+    transition: 0.3s;
+}
+
+.custom_input
+{
+    border-color: transparent;
+    background-color: transparent;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.custom_input::placeholder
+{
+    color: var(--placeholder-text);
+    transition: 0.3s;
+}
+
+.custom_input:placeholder-shown
+{
+    text-overflow: ellipsis;
+}
+
+.custom_input:focus
+{
+    border-color: transparent;
+    background-color: transparent;
+}
+
+input:focus, textarea:focus, select:focus
+{
+    outline: none;
+}
+
+.leftIcon
+{
+    margin-top: 7px;
+}
+
+.counter
+{
+    margin-top: 9px;
+    font-size: 80%;
+    font-weight: bold;
+    letter-spacing: 0.09rem;
+}
+
+.tooltip
+{
+    margin-top: 8px;
+}
 
 .inputgroup {
   width: 100%;

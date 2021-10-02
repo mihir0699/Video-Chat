@@ -34,6 +34,11 @@ body {
     --footer-background: transparent;
     --footer-border: rgba(0, 0, 0, 0.2);
     --footer-text-color-first: #000000;
+    --input-background: #fff;
+    --input-border: #d9d9d9;
+    --input-hover-border: #40a9ff;
+    --input-box-shadow: rgba(24, 144, 255, 0.2);
+    --placeholder-text: #9b9b9b;
 }
 
 .theme-dark
@@ -42,7 +47,7 @@ body {
     --background-color-to: hsl(191, 100%, 11%);
     --icons-background-color: #616161;
     --options-background: rgb(54, 54, 54);
-    --text-color-first: #cacaca;
+    --text-color-first: #e4e4e4;
     --card-background-color: rgb(54, 54, 54);
     --toggle-border-color: #fff;
     --toggle-color: #292929;
@@ -50,4 +55,9 @@ body {
     --footer-background: transparent;
     --footer-border: rgba(221, 221, 221, 0.2);
     --footer-text-color-first: rgb(175, 239, 255);
+    --input-background: rgb(54, 54, 54);
+    --input-border: #d9d9d9;
+    --input-hover-border: #40a9ff;
+    --input-box-shadow: rgba(24, 144, 255, 0.2);
+    --placeholder-text: #bdbdbd;
 } 
