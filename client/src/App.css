@@ -1,7 +1,9 @@
-.App {
-  padding: 1rem 0 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  background-color: hsla(240, 71%, 43%, 0);
+.App
+{
+    padding: 1rem 0 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    background-color: var(--background-color);
+    transition: 0.5s;
 }

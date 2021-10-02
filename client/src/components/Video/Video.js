@@ -91,7 +91,7 @@ const Video = () => {
           id={callAccepted && !callEnded ? "video1" : "video3"}
         >
           <div style={{ height: "2rem" }}>
-            <h3>{myVdoStatus && name}</h3>
+            <h3 className="theme_text">{myVdoStatus && name}</h3>
           </div>
           <div className="video-avatar-container">
             <video
@@ -152,7 +152,7 @@ const Video = () => {
               visible={isModalVisible}
               onOk={() => showModal(false)}
               onCancel={() => showModal(false)}
-              style={{ maxHeight: "100px" }}
+              style={{ maxHeight: "100px",}}
             >
               {chat.length ? (
                 <div className="msg_flex">

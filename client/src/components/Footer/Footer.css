@@ -6,6 +6,9 @@
   font-size: 0.9rem;
   padding: 1rem 0;
   margin-top: 0.5rem;
+  background-color: var(--footer-background);
+  color: var(--footer-text-color-first);
+  transition: 0.5s;
 }
 .footer__link:focus {
   outline: auto;

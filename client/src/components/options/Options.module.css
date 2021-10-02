@@ -5,10 +5,18 @@
   margin: 2rem auto;
   width: 90%;
   max-width: 600px;
-  background: #fefefe;
+  background-color: var(--options-background);
   padding: 0.5rem 1rem;
   border-top: 5px solid dodgerblue;
   border-radius: 0.25rem;
+  color: var(--text-color-first);
+    transition: 0.5s;
+}
+
+.theme_text
+{
+    color: var(--text-color-first);
+    transition: 0.5s;
 }
 
 @media (max-width: 600px) {
@@ -36,6 +44,12 @@
   font-family: Gilroy-light;
   font-weight: bold;
   letter-spacing: 0.09rem;
+  /* background-color: #000; */
+}
+
+.inputgroup::placeholder
+{
+    background-color: #000;
 }
 
 .inputgroup {
@@ -86,4 +100,17 @@
 .share_icon {
   display: flex;
   margin-left: 0.4rem;
+}
+
+.call_toggle_container
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.toggle_container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

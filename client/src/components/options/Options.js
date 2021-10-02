@@ -6,6 +6,8 @@ import * as classes from "./Options.module.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import VideoContext from "../../context/VideoContext";
 import Hang from "../../assests/hang.svg";
+import Toggle from "../Toggle/Toggle";
+
 import {
   TwitterIcon,
   TwitterShareButton,
@@ -70,7 +72,7 @@ const Options = () => {
   return (
     <div className={classes.options}>
       <div style={{ marginBottom: "0.5rem" }}>
-        <h2>Account Info</h2>
+        <h2 className={classes.theme_text}>Account Info</h2>
         <Input
           size="large"
           placeholder="Your name"
@@ -125,15 +127,16 @@ const Options = () => {
         </div>
       </div>
       <div style={{ marginBottom: "0.5rem" }}>
-        <h2>Make a call</h2>
+        <h2 className={classes.theme_text}>Make a call</h2>
 
         <Input
+        
           placeholder="Enter code to call"
           size="large"
           className={classes.inputgroup}
           value={idToCall}
           onChange={(e) => setIdToCall(e.target.value)}
-          style={{ marginRight: "0.5rem", marginBottom: "0.5rem" }}
+          style={{ marginRight: "0.5rem", marginBottom: "0.5rem",}}
           prefix={<UserOutlined className="site-form-item-icon" />}
           suffix={
             <Tooltip title="Enter code of the other user">
@@ -142,30 +145,37 @@ const Options = () => {
           }
         />
 
-        {callAccepted && !callEnded ? (
-          <Button
-            variant="contained"
-            onClick={leaveCall}
-            className={classes.hang}
-            tabIndex="0"
-          >
-            <img src={Hang} alt="hang up" style={{ height: "15px" }} />
-            &nbsp; Hang up
-          </Button>
-        ) : (
-          <Button
-            type="primary"
-            icon={<PhoneOutlined />}
-            onClick={() => {
-              if (name.length) callUser(idToCall);
-              else message.error("Please enter your name to call!");
-            }}
-            className={classes.btn}
-            tabIndex="0"
-          >
-            Call
-          </Button>
-        )}
+        <div className={classes.call_toggle_container}>
+            <div>
+            {callAccepted && !callEnded ? (
+            <Button
+                variant="contained"
+                onClick={leaveCall}
+                className={classes.hang}
+                tabIndex="0"
+            >
+                <img src={Hang} alt="hang up" style={{ height: "15px" }} />
+                &nbsp; Hang up
+            </Button>
+            ) : (
+            <Button
+                type="primary"
+                icon={<PhoneOutlined />}
+                onClick={() => {
+                if (name.length) callUser(idToCall);
+                else message.error("Please enter your name to call!");
+                }}
+                className={classes.btn}
+                tabIndex="0"
+            >
+                Call
+            </Button>
+            )}
+            </div>
+            <div className={classes.toggle_container}>
+                <Toggle />
+            </div>
+        </div>
       </div>
 
       {call.isReceivingCall && !callAccepted && (

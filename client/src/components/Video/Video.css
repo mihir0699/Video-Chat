@@ -7,13 +7,19 @@
   row-gap: 1rem;
 }
 
+.theme_text
+{
+    color: var(--text-color-first);
+    transition: 0.5s;
+}
+
 .input_msg {
   font-family: Gilroy-light;
   font-weight: bold;
   margin-top: 1rem;
 }
 .card {
-  background-color: #fefefe;
+  background-color: var(--card-background-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,10 +28,11 @@
   border: 2px solid rgb(5, 117, 230, 1);
   border-image-slice: 1;
   padding: 10px 0;
+  transition: 0.5s;
 }
 
 .card2 {
-  background-color: #fefefe;
+    background-color: var(--card-background-color);
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -33,6 +40,7 @@
   border: 2px solid rgb(5, 117, 230, 1);
   padding: 10px 0 0 0;
   border-radius: 5px;
+  transition: 0.5s;
 }
 
 .video-avatar-container {
@@ -48,8 +56,9 @@
 
 .video-active {
   width: 100%;
-  background-color: #fefefe;
+  background-color: var(--background-color);
   height: 300px;
+  transition: 0.5s;
 }
 
 .iconsDiv {
@@ -71,11 +80,12 @@
 }
 
 .icons {
-  background-color: #fdfdfd;
+    background-color: var(--icons-background-color);
   border-radius: 50%;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.34);
   transition: box-shadow 0.3s ease-in-out;
   font-size: 1.4rem;
+  transition: 0.5s;
 }
 .icons > * {
   width: 20px;
@@ -108,9 +118,10 @@
   width: 16px;
   height: 16px;
   margin: 3rem 0.2rem;
-  background: #fefefe;
+  background: var(--bouncing-background-color);
   border-radius: 50%;
   animation: bouncing-loader 0.6s infinite alternate;
+  transition: 0.5s;
 }
 
 .bouncing-loader > div:nth-child(2) {
@@ -136,6 +147,11 @@
   border-radius: 4px;
   padding: 0.4rem;
   margin-top: 0.4rem;
+}
+
+.modal_body
+{
+    background-color: #000;
 }
 
 .msg_flex {
