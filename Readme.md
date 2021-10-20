@@ -12,7 +12,7 @@ It's also a modern PWA so users can install it on their devices like other nativ
 
 **Demo Video** - ***https://youtu.be/zsyEx2sVi6c***
 
-## Features and Functionalities 😃
+## Features and Functionalities
 
 - Video Call with others
 - Mute audio/video
