@@ -6,6 +6,8 @@ import * as classes from "./Options.module.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import VideoContext from "../../context/VideoContext";
 import Hang from "../../assests/hang.svg";
+import Toggle from "../Toggle/Toggle";
+
 import {
   TwitterIcon,
   TwitterShareButton,
@@ -24,6 +26,20 @@ import { socket } from "../../context/VideoState";
 
 const Options = () => {
   const [idToCall, setIdToCall] = useState("");
+
+  const inputEl = useRef(null);
+
+  const onDivClick = () => {
+    // `current` points to the mounted text input element
+    inputEl.current.focus();
+  };
+
+  const inputEl1 = useRef(null);
+
+  const onDivClick1 = () => {
+    // `current` points to the mounted text input element
+    inputEl1.current.focus();
+  };
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const Audio = useRef();
@@ -70,8 +86,8 @@ const Options = () => {
   return (
     <div className={classes.options}>
       <div style={{ marginBottom: "0.5rem" }}>
-        <h2>Account Info</h2>
-        <Input
+        <h2 className={classes.theme_text}>Account Info</h2>
+        {/* <Input
           size="large"
           placeholder="Your name"
           prefix={<UserOutlined />}
@@ -83,8 +99,26 @@ const Options = () => {
             localStorage.setItem("name", e.target.value);
           }}
           className={classes.inputgroup}
-        />
+        /> */}
 
+        <div className={classes.input_container} onClick={onDivClick}>
+            <span className={classes.leftIcon}><UserOutlined /></span>
+            <input
+                ref={inputEl}
+                className={classes.custom_input}
+                size="large"
+                placeholder="Your name"
+                maxLength={15}
+                suffix={<small>{name.length}/15</small>}
+                value={name}
+                onChange={(e) => {
+                    setName(e.target.value);
+                    localStorage.setItem("name", e.target.value);
+                }} />
+                <span className={classes.counter}>{name.length}/15</span>
+            
+        </div>
+        
         <div className={classes.share_options}>
           <CopyToClipboard text={me}>
             <Button
@@ -125,47 +159,73 @@ const Options = () => {
         </div>
       </div>
       <div style={{ marginBottom: "0.5rem" }}>
-        <h2>Make a call</h2>
+        <h2 className={classes.theme_text}>Make a call</h2>
 
-        <Input
+        {/* <Input
+        
           placeholder="Enter code to call"
           size="large"
           className={classes.inputgroup}
           value={idToCall}
           onChange={(e) => setIdToCall(e.target.value)}
-          style={{ marginRight: "0.5rem", marginBottom: "0.5rem" }}
+          style={{ marginRight: "0.5rem", marginBottom: "0.5rem",}}
           prefix={<UserOutlined className="site-form-item-icon" />}
           suffix={
             <Tooltip title="Enter code of the other user">
               <InfoCircleOutlined style={{ color: "rgba(0,0,0,.45)" }} />
             </Tooltip>
           }
-        />
+        /> */}
 
-        {callAccepted && !callEnded ? (
-          <Button
-            variant="contained"
-            onClick={leaveCall}
-            className={classes.hang}
-            tabIndex="0"
-          >
-            <img src={Hang} alt="hang up" style={{ height: "15px" }} />
-            &nbsp; Hang up
-          </Button>
-        ) : (
-          <Button
-            type="primary"
-            icon={<PhoneOutlined />}
-            onClick={() => {
-              if (name.length) callUser(idToCall);
-              else message.error("Please enter your name to call!");
-            }}
-            className={classes.btn}
-            tabIndex="0"
-          >
-            Call
-          </Button>
-        )}
+        <div className={classes.input_container1} onClick={onDivClick1}>
+            <span className={classes.leftIcon}><UserOutlined className="site-form-item-icon" /></span>
+            <input
+                ref={inputEl1}
+                className={classes.custom_input}
+                size="large"
+                placeholder="Enter code to call"
+                suffix={<small>{name.length}/15</small>}
+                value={idToCall}
+                onChange={(e) => setIdToCall(e.target.value)}
+                />
+            <span className={classes.tooltip}>
+                <Tooltip title="Enter code of the other user">
+                    <InfoCircleOutlined />
+                </Tooltip>    
+            </span>
+        </div>
+
+        <div className={classes.call_toggle_container}>
+            <div>
+            {callAccepted && !callEnded ? (
+            <Button
+                variant="contained"
+                onClick={leaveCall}
+                className={classes.hang}
+                tabIndex="0"
+            >
+                <img src={Hang} alt="hang up" style={{ height: "15px" }} />
+                &nbsp; Hang up
+            </Button>
+            ) : (
+            <Button
+                type="primary"
+                icon={<PhoneOutlined />}
+                onClick={() => {
+                if (name.length) callUser(idToCall);
+                else message.error("Please enter your name to call!");
+                }}
+                className={classes.btn}
+                tabIndex="0"
+            >
+                Call
+            </Button>
+            )}
+            </div>
+            <div className={classes.toggle_container}>
+                <Toggle />
+            </div>
+        </div>
       </div>
 
       {call.isReceivingCall && !callAccepted && (
