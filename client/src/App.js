@@ -11,8 +11,8 @@ const App = () => {
   },[])
   return (
     <>
-    <ins class="adsbygoogle"
-     style="display:block"
+    <ins className="adsbygoogle"
+     style{{display : "block"}}
      data-ad-client="ca-pub-5366413451953973"
      data-ad-slot="8917011428"
      data-ad-format="auto"
