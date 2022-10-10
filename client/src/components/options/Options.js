@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { Input, Button, Tooltip, Modal, message } from "antd";
 import Phone from "../../assests/phone.gif";
-import Teams from "../../assests/ringtones/teams.mp3";
 import Ringtone_1 from "../../assests/ringtones/ringtone_1.mp3";
-import Good_bad_ugly from "../../assets/ringtones/good_bad_ugly.mp3";
-import Ubuntu_1 from "../../assets/ringtones/ubuntu_1.mp3";
-import Ubuntu_2 from "../../assets/ringtones/ubuntu_2.mp3";
+//import Teams from "../../assests/ringtones/teams.mp3";
+//import Good_bad_ugly from "../../assets/ringtones/good_bad_ugly.mp3";
+//import Ubuntu_1 from "../../assets/ringtones/ubuntu_1.mp3";
+//import Ubuntu_2 from "../../assets/ringtones/ubuntu_2.mp3";
 
 import * as classes from "./Options.module.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
