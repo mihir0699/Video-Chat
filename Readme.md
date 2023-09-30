@@ -50,15 +50,15 @@ It's also a modern PWA (Progressive Web App) so users can install it on their de
 
 ### Home Page
 
-![The app's interface shown here depicts the option to mute, deafen, share your code, enter account info, and make a call by entering another user's code.](https://user-images.githubusercontent.com/48746544/115701626-9b838e00-a385-11eb-8a07-214ca0b9f327.png)
+[The app's interface shown here depicts the option to mute, deafen, share your code, enter account info, and make a call by entering another user's code.](https://user-images.githubusercontent.com/48746544/115701626-9b838e00-a385-11eb-8a07-214ca0b9f327.png)
 
 ### Incoming Call
 
-![If you receive a call you are given the option to accept/decline as well as the other user's information.](https://user-images.githubusercontent.com/48746544/115701844-d8e81b80-a385-11eb-91cf-014b23e24ae4.png)
+[If you receive a call you are given the option to accept/decline as well as the other user's information.](https://user-images.githubusercontent.com/48746544/115701844-d8e81b80-a385-11eb-91cf-014b23e24ae4.png)
 
 ### In Call
 
-![Users in a call are displayed side by side like other traditional video calling platforms.](https://user-images.githubusercontent.com/48746544/115702841-07b2c180-a387-11eb-897e-f19abefafef5.png)
+[Users in a call are displayed side by side like other traditional video calling platforms.](https://user-images.githubusercontent.com/48746544/115702841-07b2c180-a387-11eb-897e-f19abefafef5.png)
 
 ### Chat
 
