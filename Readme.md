@@ -43,7 +43,7 @@ It's also a modern PWA (Progressive Web App) so users can install it on their de
 - Make sure that you have git installed on your computer
 - Fork this repository by going to the top right of this page and clicking on the fork button
 - After forking, use the command 'git clone' and append the URL to your forked repository
-- Change directories locally into Video-Chat 
+- Change directories locally into `/Video-Chat`
 - The files you will be looking at primarily will be in `client/src`
 
 ## Screenshots 📸
@@ -66,17 +66,19 @@ It's also a modern PWA (Progressive Web App) so users can install it on their de
 ### Chat
 
 ![enter image description here](https://user-images.githubusercontent.com/48746544/115702929-24e79000-a387-11eb-906c-704608263da4.png)
+*Opening a chat with a user on the other end of the call.*
 
 ![enter image description here](https://user-images.githubusercontent.com/48746544/115703177-709a3980-a387-11eb-8d9d-15ddf3b66a25.png)
+*Ongoing conversation with another user.*
 
 ## Tech Stack 💻
 
-- [React.js](https://reactjs.org/)
-- [Netlify + Heroku (Hosting)](https://www.netlify.com/)
-- [Web RTC](https://github.com/webrtc)
-- [Socket.io](https://socket.io/)
-- [Node.js](https://nodejs.org/en/)
-- [Ant Design](https://ant.design/)
+- [React.js](https://reactjs.org/) - Free, open-source, and can be used to develop applications.
+- [Netlify + Heroku](https://www.netlify.com/) - Hosting platform used to launch and deploy web applications.
+- [Web RTC](https://github.com/webrtc) - Provides applications with real-time communication.
+- [Socket.io](https://socket.io/) - Allows you to have bi-directional, real-time communication between clients and servers.
+- [Node.js](https://nodejs.org/en/) - Used to build scalable and fast applications.
+- [Ant Design](https://ant.design/) - Design system for user interfaces. 
 
 
 ## 🤩 Feel free to give this repo a ⭐ if you like the project and want to appreciate our efforts
